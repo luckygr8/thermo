@@ -14,31 +14,46 @@ class Person{
   String id = 'nil';
   String type = PersonType.other;
   double temperature;
-  DateTime date;
+  String date;
   Person({@required this.name,@required this.temperature,@required this.id,@required this.type,@required this.date});
+
+  factory Person.fromJSON(Map<String, dynamic> json){
+    return Person(
+      name: json['name'].toString(),
+      date: json['date'].toString(),
+      type: json['type'].toString(),
+      temperature: double.parse(json['temperature']),
+      id: json['id'].toString(),
+    );
+  }
+
+  @override
+  String toString() {
+    return 'Person{name: $name, id: $id, type: $type, temperature: $temperature, date: $date}';
+  }
 }
 
-final List<Person> testArray = [
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: DateTime.utc(2020,12,31)),
-];
+/*final List<Person> testArray = [
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
+];*/

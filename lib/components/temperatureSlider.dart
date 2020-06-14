@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:thermo/const/colors.dart';
+import 'package:thermo/state/appState.dart';
+import 'package:thermo/state/filterState.dart';
+
 class TemperatureSlider extends StatefulWidget {
+  TemperatureSlider(this.appState);
+  final AppState appState;
   @override
   _TemperatureSliderState createState() => _TemperatureSliderState();
 }
 
 class _TemperatureSliderState extends State<TemperatureSlider> {
-  RangeValues range = RangeValues(33,37);
-  RangeLabels tags = RangeLabels('33', '37');
+  RangeValues range = RangeValues(95, 105);
+
   @override
   Widget build(BuildContext context) {
     return RangeSlider(
@@ -15,15 +21,15 @@ class _TemperatureSliderState extends State<TemperatureSlider> {
       onChanged: (RangeValues value) {
         setState(() {
           range = value;
-          tags = RangeLabels(value.start.toString(),value.end.toString());
+          widget.appState.temperatureFilter(value);
         });
       },
       activeColor: darkColor,
       inactiveColor: lightColor,
-      min: 30,
-      max: 40,
+      min: 95,
+      max: 105,
       divisions: 100,
-      labels: tags,
+      labels: RangeLabels(range.start.toString(), range.end.toString()),
     );
   }
 }

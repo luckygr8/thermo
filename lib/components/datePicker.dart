@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:thermo/components/texts.dart';
 import 'package:thermo/const/colors.dart';
+import 'package:thermo/const/functions.dart';
 import 'package:thermo/const/sizes.dart';
 
 class DatePicker extends StatefulWidget {
@@ -9,7 +11,7 @@ class DatePicker extends StatefulWidget {
 }
 
 class _DatePickerState extends State<DatePicker> {
-  String date = 'no date selected';
+  String date = today();
 
   @override
   Widget build(BuildContext context) {
@@ -29,21 +31,23 @@ class _DatePickerState extends State<DatePicker> {
         ),
       ),
       onTap: () {
-        print('clicked');
         showDatePicker(
           context: context,
           initialDate: DateTime.now(),
           firstDate: DateTime.utc(1990, 1, 1),
           lastDate: DateTime.utc(2021, 12, 31),
         ).then((value){
+          if(value==null)
+            return;
           setState(() {
-            date = value.toString().substring(0,10);
+            var formatter = new DateFormat('dd-MM-yyyy');
+            date = formatter.format(value);
           });
         });
       },
       onLongPress: (){
         setState(() {
-          date = 'no date selected';
+          date = today();
         });
       },
     );
