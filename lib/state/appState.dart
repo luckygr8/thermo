@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:thermo/const/connection.dart';
 import 'package:thermo/const/functions.dart';
 import 'package:thermo/model/person.dart';
-import 'package:thermo/state/filterState.dart';
 
 class AppState with ChangeNotifier {
 
@@ -65,15 +64,32 @@ class AppState with ChangeNotifier {
 
   void temperatureFilter(RangeValues range) {
     this.tempRange = range;
-    print(tempRange);
+    print(this.tempRange);
+    notifyListeners();
+  }
+
+  void dateFilter(String date){
+    this.date = date;
+    print(this.date);
     notifyListeners();
   }
 
   void applyTypeFilter(){
-    print('applied filter');
+    List<Person> list = [];
+    for(Person p in people){
+      if(this.types.contains(p.type))
+        list.add(p);
+    }
+    updateFilteredList(list);
   }
-  void applyDateFilter(){
 
+  void applyDateFilter(){
+    List<Person> list = [];
+    for(Person p in people){
+      if(p.date==this.date)
+        list.add(p);
+    }
+    updateFilteredList(list);
   }
   void applyTemperatureFilter(){
     List<Person> list = [];
@@ -82,6 +98,12 @@ class AppState with ChangeNotifier {
         list.add(p);
     }
     updateFilteredList(list);
+  }
+
+  void everyFilter(){
+    applyTypeFilter();
+    applyTemperatureFilter();
+    applyDateFilter();
   }
 
 }

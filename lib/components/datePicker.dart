@@ -4,8 +4,13 @@ import 'package:thermo/components/texts.dart';
 import 'package:thermo/const/colors.dart';
 import 'package:thermo/const/functions.dart';
 import 'package:thermo/const/sizes.dart';
+import 'package:thermo/state/appState.dart';
 
 class DatePicker extends StatefulWidget {
+
+  final AppState appState;
+  DatePicker(this.appState);
+
   @override
   _DatePickerState createState() => _DatePickerState();
 }
@@ -21,12 +26,12 @@ class _DatePickerState extends State<DatePicker> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Icon(Icons.calendar_today),
-            NormalText(date, darkColor, 1.7),
+            Icon(Icons.calendar_today,color: lightColor,),
+            NormalText(date, lightColor, 1.7),
           ],
         ),
         decoration: BoxDecoration(
-          color: primaryColor,
+          color: darkColor,
           borderRadius: BorderRadius.circular(DeviceSize.ppi * 5),
         ),
       ),
@@ -42,6 +47,7 @@ class _DatePickerState extends State<DatePicker> {
           setState(() {
             var formatter = new DateFormat('dd-MM-yyyy');
             date = formatter.format(value);
+            widget.appState.dateFilter(date);
           });
         });
       },

@@ -32,28 +32,3 @@ class Person{
     return 'Person{name: $name, id: $id, type: $type, temperature: $temperature, date: $date}';
   }
 }
-
-/*final List<Person> testArray = [
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-  Person(id: '12712',name: 'cypher',temperature: 36.3,type: PersonType.student,date: ''),
-];*/

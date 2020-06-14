@@ -66,9 +66,13 @@ class _HeaderState extends State<Header> {
                         ),
                       ),
                       Expanded(
-                          flex: 30,
-                          child: Padding(
-                            padding: EdgeInsets.all(DeviceSize.size.width * .1),
+                        flex: 30,
+                        child: Padding(
+                          padding: EdgeInsets.all(DeviceSize.size.width * .1),
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.of(context).pushNamed('/graph');
+                            },
                             child: Container(
                               height: double.infinity,
                               decoration: BoxDecoration(
@@ -77,7 +81,9 @@ class _HeaderState extends State<Header> {
                                       DeviceSize.size.width)),
                               child: Icon(Icons.apps),
                             ),
-                          )),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

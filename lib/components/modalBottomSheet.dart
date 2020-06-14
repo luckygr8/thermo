@@ -88,7 +88,7 @@ class ModalBottomSheet extends StatelessWidget {
                       ),
                       ApplyFilterButton('apply type filter',_appState.applyTypeFilter),
                       SizedBox(
-                        height: DeviceSize.size.height * 0.05,
+                        height: DeviceSize.size.height * 0.06,
                       ),
                       NormalText('temperature : 95 to 105 by default',
                           lightColor, 1.5),
@@ -99,12 +99,20 @@ class ModalBottomSheet extends StatelessWidget {
                       SizedBox(
                         height: DeviceSize.size.height * 0.03,
                       ),
+                      ApplyFilterButton('apply temperature filter',_appState.applyTemperatureFilter),
+                      SizedBox(
+                        height: DeviceSize.size.height * 0.06,
+                      ),
                       NormalText('pick date : default is current date',
                           lightColor, 1.5),
                       SizedBox(
                         height: DeviceSize.size.height * 0.02,
                       ),
-                      DatePicker(),
+                      DatePicker(_appState),
+                      SizedBox(
+                        height: DeviceSize.size.height * 0.03,
+                      ),
+                      ApplyFilterButton('apply date filter',_appState.applyDateFilter),
                       SizedBox(
                         height: DeviceSize.size.height * 0.04,
                       ),
