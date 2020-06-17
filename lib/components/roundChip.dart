@@ -17,7 +17,7 @@ class RoundedChip extends StatefulWidget {
 
 class _RoundedChipState extends State<RoundedChip> {
 
-  bool selected = true;
+  bool selected = false;
 
   @override
   Widget build(BuildContext context) {

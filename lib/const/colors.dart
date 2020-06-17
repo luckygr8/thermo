@@ -17,8 +17,15 @@ final Color primaryColorDark =Color(0xff127681);
 final Color lightColor = Color(0xfff4f6ff);
 final Color darkColor = Color(0xff10375c);
 
-// very light theme / not as good
+// very light theme
 /*final Color primaryColor =Color(0xffffe0ac);
 final Color primaryColorDark =Color(0xffffacb7);
 final Color lightColor = Color(0xfff9f9f9);
 final Color darkColor = Color(0xff6886c5);*/
+
+// white - brown theme
+/*final Color primaryColor =Color(0xffE1F4F3);
+final Color primaryColorDark =Color(0xff706C61);
+final Color lightColor = Color(0xffFFFFFF);
+final Color darkColor = Color(0xff333333);*/
+

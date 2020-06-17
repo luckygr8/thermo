@@ -33,11 +33,11 @@ class AppState with ChangeNotifier {
   RangeValues tempRange = RangeValues(95, 105);
 
   List<String> types = [
-    PersonType.student,
+    /*PersonType.student,
     PersonType.teacher,
     PersonType.staff,
     PersonType.visitor,
-    PersonType.other
+    PersonType.other*/
   ];
 
   void initFilters(){
@@ -77,7 +77,7 @@ class AppState with ChangeNotifier {
   void applyTypeFilter(){
     List<Person> list = [];
     for(Person p in people){
-      if(this.types.contains(p.type))
+      if(!this.types.contains(p.type))
         list.add(p);
     }
     updateFilteredList(list);

@@ -15,8 +15,8 @@ class ListItem extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(DeviceSize.size.width * 0.05),
       decoration: BoxDecoration(
-        color: primaryColor,
         borderRadius: BorderRadius.circular(DeviceSize.size.width * 0.05),
+        color: primaryColor
       ),
       child: Padding(
         padding: EdgeInsets.only(left: DeviceSize.ppi * 6),

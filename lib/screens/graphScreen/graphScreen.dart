@@ -33,11 +33,9 @@ class _GraphScreenState extends State<GraphScreen> {
                     children: <Widget>[
                       Expanded(
                         flex: 15,
-                        child: Container(
-                          child: Center(
-                            child: NormalText('graph view of today\'s scans',
-                                lightColor, 1.5),
-                          ),
+                        child: Center(
+                          child: NormalText(
+                              'graph view of today\'s scans', lightColor, 1.5),
                         ),
                       ),
                       Expanded(
@@ -57,14 +55,14 @@ class _GraphScreenState extends State<GraphScreen> {
                                 ),
                                 Expanded(
                                   flex: 1,
-                                  child: VerticalGraphBar(Colors.yellow, .5),
+                                  child: VerticalGraphBar(Colors.green, .5),
                                 ),
                                 SizedBox(
                                   width: DeviceSize.ppi * 6,
                                 ),
                                 Expanded(
                                   flex: 1,
-                                  child: VerticalGraphBar(Colors.yellow, .6),
+                                  child: VerticalGraphBar(Colors.teal, .6),
                                 ),
                                 SizedBox(
                                   width: DeviceSize.ppi * 6,

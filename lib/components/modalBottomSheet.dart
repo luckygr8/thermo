@@ -114,10 +114,7 @@ class ModalBottomSheet extends StatelessWidget {
                       ),
                       ApplyFilterButton('apply date filter',_appState.applyDateFilter),
                       SizedBox(
-                        height: DeviceSize.size.height * 0.04,
-                      ),
-                      SizedBox(
-                        height: DeviceSize.size.height * 0.01,
+                        height: DeviceSize.size.height * 0.05,
                       ),
                     ],
                   ),

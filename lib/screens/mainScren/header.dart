@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:thermo/components/texts.dart';
@@ -29,9 +30,37 @@ class _HeaderState extends State<Header> {
               children: <Widget>[
                 Expanded(
                   flex: 35,
-                  child: Container(
-                    child: Center(
-                      child: NormalText('thermo', lightColor, 4),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        NormalText('thermo', lightColor, 4),
+                        SizedBox(
+                          width: DeviceSize.size.width * .08,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            showAboutDialog(
+                              context: context,
+                              applicationLegalese: 'This software is designed with JMIT and it\'s staff'
+                                  ' in mind. This is the first stable version of thermo.'
+                                  ' for any updations, contact lead dev \n'
+                                  ' LAKSHAY 1217250',
+                              applicationName: 'thermo',
+                              applicationVersion: '1.0.0',
+                              applicationIcon: SizedBox(
+                                child: Image.asset('assets/thermometer.png'),
+                                height: DeviceSize.size.height * .1,
+                                width: DeviceSize.size.width * .1,
+                              ),
+                            );
+                          },
+                          child: Icon(
+                            Icons.info,
+                            color: lightColor,
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
@@ -42,27 +71,25 @@ class _HeaderState extends State<Header> {
                     children: <Widget>[
                       Expanded(
                         flex: 70,
-                        child: Container(
-                          child: Column(
-                            children: <Widget>[
-                              Expanded(
-                                flex: 1,
-                                child: Center(
-                                  child: NormalText(
-                                      'total records : ${state.filtered.length}',
-                                      lightColor,
-                                      1.5),
-                                ),
+                        child: Column(
+                          children: <Widget>[
+                            Expanded(
+                              flex: 1,
+                              child: Center(
+                                child: NormalText(
+                                    'total records : ${state.filtered.length}',
+                                    lightColor,
+                                    1.5),
                               ),
-                              Expanded(
-                                flex: 1,
-                                child: Center(
-                                  child: NormalText(
-                                      'overall report: good', lightColor, 1.5),
-                                ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: Center(
+                                child: NormalText(
+                                    'overall report: good', lightColor, 1.5),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                       Expanded(
@@ -70,7 +97,7 @@ class _HeaderState extends State<Header> {
                         child: Padding(
                           padding: EdgeInsets.all(DeviceSize.size.width * .1),
                           child: GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               Navigator.of(context).pushNamed('/graph');
                             },
                             child: Container(
