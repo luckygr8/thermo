@@ -4,11 +4,13 @@ import 'package:thermo/components/texts.dart';
 import 'package:thermo/const/colors.dart';
 import 'package:thermo/const/functions.dart';
 import 'package:thermo/const/sizes.dart';
+import 'package:thermo/model/person.dart';
 import 'package:thermo/state/appState.dart';
+import 'package:date_range_picker/date_range_picker.dart' as DateRagePicker;
 
 class DatePicker extends StatefulWidget {
-
   final AppState appState;
+
   DatePicker(this.appState);
 
   @override
@@ -16,7 +18,8 @@ class DatePicker extends StatefulWidget {
 }
 
 class _DatePickerState extends State<DatePicker> {
-  String date = today();
+  String date1;
+  String date2;
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +29,11 @@ class _DatePickerState extends State<DatePicker> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Icon(Icons.calendar_today,color: lightColor,),
-            NormalText(date, lightColor, 1.7),
+            Icon(
+              Icons.calendar_today,
+              color: lightColor,
+            ),
+            NormalText('$date1 to $date2', lightColor, 1.5),
           ],
         ),
         decoration: BoxDecoration(
@@ -35,27 +41,53 @@ class _DatePickerState extends State<DatePicker> {
           borderRadius: BorderRadius.circular(DeviceSize.ppi * 5),
         ),
       ),
-      onTap: () {
-        showDatePicker(
-          context: context,
-          initialDate: DateTime.now(),
-          firstDate: DateTime.utc(1990, 1, 1),
-          lastDate: DateTime.utc(2021, 12, 31),
-        ).then((value){
-          if(value==null)
-            return;
-          setState(() {
-            var formatter = new DateFormat('dd-MM-yyyy');
-            date = formatter.format(value);
-            widget.appState.dateFilter(date);
-          });
+      onTap: () async {
+        DateRagePicker.showDatePicker(
+                context: context,
+                initialFirstDate: new DateTime.now(),
+                initialLastDate:
+                    (new DateTime.now()).add(new Duration(days: 7)),
+                firstDate: new DateTime(2020),
+                lastDate: new DateTime(2022))
+            .then((value) {
+          /*var formatter = new DateFormat('dd-MM-yyyy');
+          date1 = formatter.format(value[0]);
+          date2 = formatter.format(value[1]);*/
+          widget.appState.dateFilter(
+              CustomDateTime(
+                  year: value[0].year,
+                  month: value[0].month,
+                  day: value[0].day),
+              CustomDateTime(
+                  year: value[1].year,
+                  month: value[1].month,
+                  day: value[1].day));
+          setState(() {});
         });
       },
-      onLongPress: (){
+      onLongPress: () {
         setState(() {
-          date = today();
+          date1 = today();
+          date2 = today();
         });
       },
     );
   }
 }
+// old onTap code
+//onTap: () {
+//showDatePicker(
+//context: context,
+//initialDate: DateTime.now(),
+//firstDate: DateTime.utc(1990, 1, 1),
+//lastDate: DateTime.utc(2021, 12, 31),
+//).then((value){
+//if(value==null)
+//return;
+//setState(() {
+//var formatter = new DateFormat('dd-MM-yyyy');
+//date = formatter.format(value);
+//widget.appState.dateFilter(date);
+//});
+//});
+//}

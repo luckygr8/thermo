@@ -21,6 +21,7 @@ class _ListAreaState extends State<ListArea> {
 
   @override
   Widget build(BuildContext context) {
+    print('list rebuilt');
     return Consumer<AppState>(
       builder: (context, state, child) => Expanded(
         flex: 65,
@@ -36,7 +37,7 @@ class _ListAreaState extends State<ListArea> {
               ),);
             });
           },
-          child: (state.people.isEmpty)
+          child: (state.filtered.isEmpty)
               ? Center(child: NoDataFound())
               : ListView.builder(
             itemCount: state.filtered.length,

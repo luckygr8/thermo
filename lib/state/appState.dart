@@ -8,7 +8,7 @@ import 'package:thermo/model/person.dart';
 class AppState with ChangeNotifier {
 
   AppState(){
-    Connection.getPersons(today(), this);
+    //Connection.getPersons(today(), this);
   }
 
   List<Person> people = []; // list which has all the records
@@ -22,13 +22,13 @@ class AppState with ChangeNotifier {
 
   void updateFilteredList(List<Person> newList) {
     this.filtered = newList;
-    print(filtered);
-    print(filtered.length);
+    print('fetched ${filtered.length} records which are \n $filtered');
     notifyListeners();
   }
 
   // FILTERS //
-  String date = '';
+  CustomDateTime date1;
+  CustomDateTime date2;
 
   RangeValues tempRange = RangeValues(95, 105);
 
@@ -41,14 +41,16 @@ class AppState with ChangeNotifier {
   ];
 
   void initFilters(){
-    date = '';
+    this.filtered = List.from(this.people);
+    String date1 = '';
+    String date2 = '';
     tempRange = RangeValues(95, 105);
     types = [
-      PersonType.student,
+      /*PersonType.student,
       PersonType.teacher,
       PersonType.staff,
       PersonType.visitor,
-      PersonType.other
+      PersonType.other*/
     ];
   }
 
@@ -68,15 +70,16 @@ class AppState with ChangeNotifier {
     notifyListeners();
   }
 
-  void dateFilter(String date){
-    this.date = date;
-    print(this.date);
+  void dateFilter(CustomDateTime date1 , CustomDateTime date2){
+    this.date1 = date1;
+    this.date2 = date2;
+    print('$date1 to $date2');
     notifyListeners();
   }
 
   void applyTypeFilter(){
     List<Person> list = [];
-    for(Person p in people){
+    for(Person p in filtered){
       if(!this.types.contains(p.type))
         list.add(p);
     }
@@ -84,16 +87,17 @@ class AppState with ChangeNotifier {
   }
 
   void applyDateFilter(){
-    List<Person> list = [];
-    for(Person p in people){
-      if(p.date==this.date)
+    Connection.getPersonsByDate(this.date1, this.date2, this);
+    //List<Person> list = [];
+    /*for(Person p in filtered){
+      if(p.date.compareTo(date1)>1 && p.date.compareTo(date2)<-1)
         list.add(p);
-    }
-    updateFilteredList(list);
+    }*/
+    //updateFilteredList(list);
   }
   void applyTemperatureFilter(){
     List<Person> list = [];
-    for(Person p in people){
+    for(Person p in filtered){
       if(p.temperature>=tempRange.start && p.temperature<=tempRange.end)
         list.add(p);
     }

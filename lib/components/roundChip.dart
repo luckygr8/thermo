@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:provider/provider.dart';
 import 'package:thermo/components/texts.dart';
 import 'package:thermo/const/colors.dart';
 import 'package:thermo/const/sizes.dart';
 import 'package:thermo/state/appState.dart';
 import 'package:thermo/state/filterState.dart';
+import 'package:thermo/const/functions.dart' as func;
 
 class RoundedChip extends StatefulWidget {
   final String text;
@@ -24,6 +26,7 @@ class _RoundedChipState extends State<RoundedChip> {
     return GestureDetector(
       onTap: () {
         setState(() {
+          func.vibrate();
           selected = !selected;
           widget.appState.typeFilter(widget.text);
         });
