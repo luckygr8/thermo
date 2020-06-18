@@ -11,14 +11,7 @@ class AppState with ChangeNotifier {
     //Connection.getPersons(today(), this);
   }
 
-  List<Person> people = []; // list which has all the records
   List<Person> filtered = []; // list which has just the filtered records
-
-  void updateList(List<Person> newList) {
-    this.people = newList;
-    this.filtered = newList;
-    notifyListeners();
-  }
 
   void updateFilteredList(List<Person> newList) {
     this.filtered = newList;
@@ -41,9 +34,8 @@ class AppState with ChangeNotifier {
   ];
 
   void initFilters(){
-    this.filtered = List.from(this.people);
-    String date1 = '';
-    String date2 = '';
+    date1 = null;
+    date2 = null;
     tempRange = RangeValues(95, 105);
     types = [
       /*PersonType.student,

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:thermo/components/texts.dart';
 import 'package:thermo/const/colors.dart';
 import 'package:thermo/const/sizes.dart';
+import 'package:thermo/screens/graphScreen/graphScreen.dart';
 import 'package:thermo/state/appState.dart';
 
 class Header extends StatefulWidget {
@@ -42,12 +43,20 @@ class _HeaderState extends State<Header> {
                           onTap: () {
                             showAboutDialog(
                               context: context,
-                              applicationLegalese: 'This software is designed with JMIT and it\'s staff'
+                              applicationLegalese:
+                                  'This software is designed with JMIT and it\'s staff'
                                   ' in mind. This is the first stable version of thermo.'
                                   ' for any updations, contact lead dev \n'
                                   ' LAKSHAY 1217250',
                               applicationName: 'thermo',
                               applicationVersion: '1.0.0',
+                              children: [
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                NormalText('THIS IS A PRE-PRODUCTION VERSION',
+                                    darkColor, 1.4)
+                              ],
                               applicationIcon: SizedBox(
                                 child: Image.asset('assets/thermometer.png'),
                                 height: DeviceSize.size.height * .1,
@@ -98,7 +107,12 @@ class _HeaderState extends State<Header> {
                           padding: EdgeInsets.all(DeviceSize.size.width * .1),
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.of(context).pushNamed('/graph');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => GraphScreen(state),
+                                ),
+                              );
                             },
                             child: Container(
                               height: double.infinity,

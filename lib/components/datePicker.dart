@@ -43,25 +43,26 @@ class _DatePickerState extends State<DatePicker> {
       ),
       onTap: () async {
         DateRagePicker.showDatePicker(
-                context: context,
-                initialFirstDate: new DateTime.now(),
-                initialLastDate:
-                    (new DateTime.now()).add(new Duration(days: 7)),
-                firstDate: new DateTime(2020),
-                lastDate: new DateTime(2022))
+            context: context,
+            initialFirstDate: new DateTime.now(),
+            initialLastDate:
+            (new DateTime.now()).add(new Duration(days: 7)),
+            firstDate: new DateTime(2020),
+            lastDate: new DateTime(2022))
             .then((value) {
-          /*var formatter = new DateFormat('dd-MM-yyyy');
-          date1 = formatter.format(value[0]);
-          date2 = formatter.format(value[1]);*/
-          widget.appState.dateFilter(
-              CustomDateTime(
-                  year: value[0].year,
-                  month: value[0].month,
-                  day: value[0].day),
-              CustomDateTime(
-                  year: value[1].year,
-                  month: value[1].month,
-                  day: value[1].day));
+          CustomDateTime cdt1 = CustomDateTime(
+              year: value[0].year,
+              month: value[0].month,
+              day: value[0].day);
+          CustomDateTime cdt2 = CustomDateTime(
+              year: value[1].year,
+              month: value[1].month,
+              day: value[1].day);
+          date1 = '${cdt1.year}/${cdt1.month}/${cdt1.day}';
+          date2 = '${cdt2.year}/${cdt2.month}/${cdt2.day}';
+          widget.appState.dateFilter(cdt1
+              , cdt2
+          );
           setState(() {});
         });
       },

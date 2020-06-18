@@ -28,6 +28,7 @@ dependencies:
   intl: ^0.16.1
   date_range_picker: ^1.0.5
   flutter_vibrate: ^1.0.0
+  pie_chart: ^3.1.1
 
 
 

@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
 abstract class PersonType {
-  static final String student = "student";
-  static final String teacher = "teacher";
-  static final String staff = "staff";
-  static final String visitor = "visitor";
-  static final String other = "other";
+  static const String student = "student";
+  static const String teacher = "teacher";
+  static const String staff = "staff";
+  static const String visitor = "visitor";
+  static const String other = "other";
 }
 
 class CustomDateTime {

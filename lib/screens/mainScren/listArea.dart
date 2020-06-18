@@ -8,6 +8,7 @@ import 'package:thermo/const/colors.dart';
 import 'package:thermo/const/connection.dart';
 import 'package:thermo/const/functions.dart';
 import 'package:thermo/const/sizes.dart';
+import 'package:thermo/model/person.dart';
 import 'package:thermo/state/appState.dart';
 
 class ListArea extends StatefulWidget {
@@ -21,7 +22,6 @@ class _ListAreaState extends State<ListArea> {
 
   @override
   Widget build(BuildContext context) {
-    print('list rebuilt');
     return Consumer<AppState>(
       builder: (context, state, child) => Expanded(
         flex: 65,
@@ -29,12 +29,9 @@ class _ListAreaState extends State<ListArea> {
           key: _refreshIndicatorKey,
           onRefresh: () async {
             setState(() {
-              Connection.getPersons(today(), state);
-              Scaffold.of(context).showSnackBar(SnackBar(
-                content: NormalText('fetched ${state.filtered.length} records',lightColor,1.5),
-                duration: Duration(seconds: 2),
-                backgroundColor: darkColor,
-              ),);
+              DateTime today = DateTime.now();
+              CustomDateTime cdt = CustomDateTime(year: today.year,month: today.month,day: today.day);
+              Connection.getPersonsBySingleDate(cdt, state);
             });
           },
           child: (state.filtered.isEmpty)
@@ -71,6 +68,10 @@ class NoDataFound extends StatelessWidget {
               height: DeviceSize.size.height * .02,
             ),
             NormalText('Pull down to reload records ', darkColor, 2),
+            SizedBox(
+              height: DeviceSize.size.height * .02,
+            ),
+            NormalText('* this will load today\'s records \n for a more advanced search, select date filters', darkColor, 1.3),
           ],
         )
       ],
