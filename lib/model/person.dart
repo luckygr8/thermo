@@ -51,13 +51,14 @@ class Person {
   String type = PersonType.other;
   double temperature;
   CustomDateTime date;
+  String entry;
 
   Person(
       {@required this.name,
       @required this.temperature,
       @required this.id,
       @required this.type,
-      @required this.date});
+      @required this.date,this.entry});
 
   factory Person.fromJSON(Map<String, dynamic> json) {
     return Person(
@@ -67,11 +68,9 @@ class Person {
       type: json['type'].toString(),
       temperature: double.parse(json['temperature']),
       id: json['id'].toString(),
+      entry:json['entry'].toString()
     );
   }
 
-  @override
-  String toString() {
-    return 'Person{name: $name, id: $id, type: $type, temperature: $temperature, date: $date}';
-  }
+
 }

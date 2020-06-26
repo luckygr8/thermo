@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:thermo/components/customCheckBoxTile.dart';
+import 'package:thermo/components/texts.dart';
+import 'package:thermo/const/colors.dart';
 import 'package:thermo/screens/graphScreen/customBarGraph.dart';
 import 'package:thermo/screens/graphScreen/customPieChart.dart';
 import 'package:thermo/state/appState.dart';
 
-/**
+/*
  * Features to build::
  * graph showing temperature of people b/w 5 different classes
  *  average temperature of all staff type
@@ -42,7 +45,7 @@ class _GraphScreenState extends State<GraphScreen> {
           child: Column(
             children: <Widget>[
               CustomBarGraphs(widget.appState),
-              CustomPieChart(widget.appState)
+              CustomPieChart(widget.appState),
             ],
           ),
         ),
@@ -52,3 +55,9 @@ class _GraphScreenState extends State<GraphScreen> {
 }
 
 
+
+/**
+ * mark entry exit based on even odd entries
+ * filter by ID
+ *
+ */

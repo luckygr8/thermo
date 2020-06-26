@@ -32,9 +32,9 @@ class StampText extends StatelessWidget {
     return Card(
       color: darkColor,
       child: Padding(
-        padding: EdgeInsets.all(DeviceSize.ppi),
+        padding: EdgeInsets.all(DeviceSize.ppi/1.2),
         child: RichText(
-          text: TextSpan(text: type,style: TextStyle(fontFamily: 'Comforta',fontSize: DeviceSize.ppi*5,color: lightColor)),
+          text: TextSpan(text: type,style: TextStyle(fontFamily: 'Comforta',fontSize: DeviceSize.ppi*4,color: lightColor)),
         ),
       ),
     );

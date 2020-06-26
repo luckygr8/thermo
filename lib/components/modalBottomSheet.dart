@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:thermo/components/applyFilterButton.dart';
+import 'package:thermo/components/customCheckBoxTile.dart';
 import 'package:thermo/components/datePicker.dart';
 import 'package:thermo/components/listItem.dart';
 import 'package:thermo/components/roundChip.dart';
@@ -67,10 +68,15 @@ class ModalBottomSheet extends StatelessWidget {
                       SizedBox(
                         height: DeviceSize.size.height * 0.05,
                       ),
+                      CustomCheckBoxTile('people who enter JMIT',Icons.assignment_returned,_appState.applyEntryInFilter),
+                      CustomCheckBoxTile('people who leave JMIT',Icons.exit_to_app,_appState.applyEntryOutFilter),
+                      SizedBox(
+                        height: DeviceSize.size.height * 0.03,
+                      ),
                       NormalText('staff type : all selected by default',
                           lightColor, 1.5),
                       SizedBox(
-                        height: DeviceSize.size.height * 0.02,
+                        height: DeviceSize.size.height * 0.03,
                       ),
                       Wrap(
                         spacing: DeviceSize.ppi * 4,
@@ -86,7 +92,44 @@ class ModalBottomSheet extends StatelessWidget {
                       SizedBox(
                         height: DeviceSize.size.height * 0.03,
                       ),
-                      ApplyFilterButton('apply type filter',_appState.applyTypeFilter),
+                      ApplyFilterButton(
+                          'apply type filter', _appState.applyTypeFilter),
+                      SizedBox(
+                        height: DeviceSize.size.height * 0.03,
+                      ),
+                      NormalText('search by id : type an ID in the box below',
+                          lightColor, 1.5),
+                      SizedBox(
+                        height: DeviceSize.size.height * 0.06,
+                      ),
+                      TextFormField(
+                        cursorColor: darkColor,
+                        onChanged: (value) => _appState.searchID = value,
+                        style: TextStyle(
+                            fontSize: DeviceSize.size.width / 25,
+                            color: lightColor,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Comforta'),
+                        decoration: InputDecoration(
+                            fillColor: darkColor,
+                            focusColor: primaryColor,
+                            focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: primaryColor, width: 2)),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: primaryColor, width: 2)),
+                            labelText: 'ID goes here',
+                            labelStyle: TextStyle(
+                                fontSize: DeviceSize.size.width / 28,
+                                color: lightColor,
+                                fontFamily: 'Comforta')),
+                      ),
+                      SizedBox(
+                        height: DeviceSize.size.height * 0.04,
+                      ),
+                      ApplyFilterButton(
+                          'search using ID', _appState.applySearchIdFilter),
                       SizedBox(
                         height: DeviceSize.size.height * 0.06,
                       ),
@@ -99,7 +142,8 @@ class ModalBottomSheet extends StatelessWidget {
                       SizedBox(
                         height: DeviceSize.size.height * 0.03,
                       ),
-                      ApplyFilterButton('apply temperature filter',_appState.applyTemperatureFilter),
+                      ApplyFilterButton('apply temperature filter',
+                          _appState.applyTemperatureFilter),
                       SizedBox(
                         height: DeviceSize.size.height * 0.06,
                       ),
@@ -112,7 +156,8 @@ class ModalBottomSheet extends StatelessWidget {
                       SizedBox(
                         height: DeviceSize.size.height * 0.03,
                       ),
-                      ApplyFilterButton('apply date filter',_appState.applyDateFilter),
+                      ApplyFilterButton(
+                          'apply date filter', _appState.applyDateFilter),
                       SizedBox(
                         height: DeviceSize.size.height * 0.05,
                       ),
